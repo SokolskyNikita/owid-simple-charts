@@ -1,16 +1,14 @@
-# 🚀 owid-simple-charts
+# owid-simple-charts
 
 **The missing user-friendly interface for OWID's world-class data visualization library**
 
 *Status: v0.1 - Just getting started!*
 
-> 📖 **Looking for technical docs?** See the [original OWID README](README.md) for developer setup, architecture details, and contribution guidelines.
-
 ## What is this?
 
-This project solves a simple problem: **OWID's grapher is amazing, but way too complex for most people to use**.
+This project aims to solve a simple problem: **OWID's grapher is amazing, but way too complex for most people to use**.
 
-[Our World in Data](https://ourworldindata.org) built one of the best interactive data visualization libraries on the web. Their charts are gorgeous, responsive, and handle everything from line charts to world maps. The problem? Using it requires:
+[Our World in Data](https://ourworldindata.org) has built one of the best interactive data visualization libraries on the web. Their charts are gorgeous, responsive, and handle everything from line charts to world maps. The problem? Using it requires:
 
 - Docker setup
 - MySQL database 
@@ -28,9 +26,9 @@ A simple web interface where you can:
 
 Think "Plotly for OWID charts" or "Chart.js but with OWID's power."
 
-## Why OWID's grapher rocks (and why we're not rebuilding it)
+## Why OWID's grapher rocks
 
-OWID didn't just build another charting library. They solved real problems that most visualization tools ignore:
+OWID didn't just build another charting library. They solved real problems:
 
 - **Responsive by default** - Works perfectly on mobile and desktop
 - **Handles missing data gracefully** - No broken charts from incomplete datasets
@@ -39,9 +37,6 @@ OWID didn't just build another charting library. They solved real problems that 
 - **Time series animations** - Play through years of data smoothly
 - **World map support** - Choropleth maps with built-in country data
 - **Professional styling** - Looks like it belongs in a research paper
-- **Smart labeling** - Automatically positions labels to avoid overlap
-- **Entity selection** - Choose which countries/regions to show
-- **Source attribution** - Built-in citation and source management
 
 ## The technical approach
 
@@ -57,14 +52,31 @@ Complex Admin Interface → Database → Multi-step Pipeline → Chart
 CSV Upload → Simple UI → Chart → Embed URL
 ```
 
-## Quick start (for end users)
+## Getting started
 
-*Coming soon! We're building this now.*
+*Documentation coming soon as we build this out!*
 
-1. Visit our web app
-2. Drag & drop your CSV file
-3. Configure your chart
-4. Copy the embed code
+### For developers
+
+```bash
+# Clone and explore the original OWID codebase
+git clone https://github.com/SokolskyNikita/owid-simple-charts.git
+cd owid-simple-charts
+
+# The magic happens in these packages:
+# packages/@ourworldindata/grapher - The core visualization library
+# packages/@ourworldindata/core-table - Data handling and transforms
+```
+
+### Current status
+
+- [x] Research and understand OWID's architecture
+- [x] Identify the core packages we need
+- [x] Create this repository and documentation
+- [ ] Build minimal CSV → Chart proof of concept
+- [ ] Create web interface for chart configuration
+- [ ] Add embed URL generation
+- [ ] Deploy hosting infrastructure
 
 ## Sample data format
 
@@ -82,97 +94,29 @@ USA,2010,78.5
 USA,2020,78.9
 ```
 
-Upload that file → Get an interactive line chart showing life expectancy trends with:
-- Entity selector (toggle countries on/off)
-- Time scrubber (slide through years)
-- Hover tooltips with exact values
-- Mobile-responsive design
-- Export options (PNG, SVG, CSV)
+Upload that file, and get an interactive line chart showing life expectancy trends.
 
-## Why not just use Chart.js, D3, or Plotly?
+## Why not just use Chart.js or D3?
 
-Great question! Those are excellent libraries, but OWID's grapher handles edge cases they don't:
+Good question! Those are excellent libraries, but OWID's grapher handles things they don't:
 
-| Feature | Chart.js | D3.js | Plotly | OWID Grapher |
-|---------|----------|-------|--------|-------------|
-| Responsive design | Basic | Manual | Good | Excellent |
-| Missing data handling | Poor | Manual | Good | Excellent |
-| Entity selection | None | Manual | Basic | Advanced |
-| Time animations | None | Manual | Basic | Smooth |
-| World maps | None | Complex | Basic | Professional |
-| Source attribution | None | Manual | None | Built-in |
-| Accessibility | Basic | Manual | Good | Excellent |
+- **Automatic entity selection** - Choose which countries to show
+- **Time scrubbing** - Slide through years of data
+- **Smart labeling** - Automatically positions labels to avoid overlap
+- **Missing data handling** - Graceful degradation when data points are missing
+- **Source attribution** - Built-in citation and source management
+- **Responsive legends** - Adapts to screen size and data complexity
 
-## Development roadmap
+## Contributing
 
-### Phase 1: Proof of Concept ✨ *← We are here*
-- [x] Research OWID architecture
-- [x] Identify core packages
-- [x] Create repository and documentation
-- [ ] Build minimal CSV → Chart PoC
-- [ ] Validate approach with sample data
+This is v0.1 - we're just getting started! If you're interested in:
 
-### Phase 2: Core Interface
-- [ ] File upload with validation
-- [ ] Chart type selection (Line, Bar, Scatter, Map)
-- [ ] Axis configuration
-- [ ] Color scheme picker
-- [ ] Entity filtering
+- Making data visualization more accessible
+- React/TypeScript development
+- Data pipeline architecture
+- UX design for data tools
 
-### Phase 3: Advanced Features
-- [ ] Chart annotations
-- [ ] Custom styling options
-- [ ] Embed URL generation
-- [ ] Export functionality
-
-### Phase 4: Platform
-- [ ] User accounts
-- [ ] Chart galleries
-- [ ] Collaboration features
-- [ ] Hosting infrastructure
-
-## For developers
-
-Want to contribute? Here's how to get started:
-
-### Understanding the codebase
-The magic happens in these packages:
-- `packages/@ourworldindata/grapher` - Core visualization library
-- `packages/@ourworldindata/core-table` - Data handling ("Pandas for TypeScript")
-- `packages/@ourworldindata/utils` - Shared utilities
-
-### Local development
-```bash
-# Clone this repository
-git clone https://github.com/SokolskyNikita/owid-simple-charts.git
-cd owid-simple-charts
-
-# For full OWID setup, see the main README.md
-# For simple chart development, we'll create a standalone Next.js app
-```
-
-### Contributing
-This is v0.1 - we're just getting started! Areas where we need help:
-
-- **React/TypeScript development** - Building the user interface
-- **Data pipeline architecture** - CSV parsing and transformation
-- **UX design** - Making data visualization accessible
-- **Documentation** - Guides and tutorials
-- **Testing** - Ensuring reliability across datasets
-
-## Frequently asked questions
-
-**Q: Is this affiliated with Our World in Data?**
-A: No, this is an independent project. We're huge fans of their work and hope to make their excellent tools more accessible.
-
-**Q: Why fork instead of contribute upstream?**
-A: OWID's tools are designed for their specific needs (research organization with technical team). We're building for a different audience (anyone who wants great charts).
-
-**Q: Will this compete with OWID?**
-A: Not at all! We're expanding their reach. More people using OWID-quality visualizations = more people appreciating good data visualization.
-
-**Q: What's the business model?**
-A: TBD. Possibly freemium hosting, or just open source forever. Our goal is accessibility, not profit.
+Drop a comment in the issues or submit a PR.
 
 ## License
 
@@ -180,10 +124,4 @@ MIT (same as OWID's original project)
 
 ---
 
-**🤝 Ready to help make data visualization accessible to everyone?**
-
-- 💬 [Join the discussion](https://github.com/SokolskyNikita/owid-simple-charts/discussions)
-- 🐛 [Report issues](https://github.com/SokolskyNikita/owid-simple-charts/issues)
-- 🚀 [Submit pull requests](https://github.com/SokolskyNikita/owid-simple-charts/pulls)
-
-*This project is not officially affiliated with Our World in Data, but we're huge fans of their work.* 
+*This project is not officially affiliated with Our World in Data, but we're huge fans of their work and hope to make their excellent tools more accessible to everyone.* 
